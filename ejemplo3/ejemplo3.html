@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<title>	</title>
+	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+	<link rel="stylesheet" href="listadetareas.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.27/angular.min.js"></script>
+	<script src="listadetareas.js"></script>
+</head>
+<body ng-app>
+<h2>Lista de tareas </h2>
+		<div ng-controller="ControladorTareas">
+		<a href="" class="text-danger" ng-click="eliminar()">ELiminar</a> 
+				<span>{{restantes()}} de {{tareas.length}}</span>
+				<ul class="unstyle">
+						<li ng-repeat="tarea in tareas">	
+						<input type="checkbox" ng-model="tarea.hecho">
+						<span class="hecho-{{tarea.hecho}}">{{tarea.texto}}</span>
+						</li>				
+				</ul>
+				<form ng-submit='agregarTarea()'>
+					<input type="text" name="tarea" id="tarea" ng-model="textoNuevaTarea">
+					<button class="btn btn-primary" type='submit'>Agregar</button>
+				</form>	
+		</div>	
+</body>
+</html>

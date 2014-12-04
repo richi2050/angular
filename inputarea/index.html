@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>ejemplo</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.27/angular.min.js"></script>
+	<script>
+	var miApp= angular.module('miApp',[]);
+
+
+
+		miApp.factory('Dato',function(){ 
+			return [
+			{mensaje:'Primer opcion',id:'1'},
+			{mensaje:'Dos opcion',id:'2'},
+			{mensaje:'Tres opcion',id:'3'},
+			{mensaje:'Cuatro opcion',id:'4'}];
+		});
+
+				function unoController($scope, Dato){
+					$scope.dato=Dato;
+
+					$scope.eliminar= function (id){
+						var tareaViejas = Dato;
+						datos = [];
+						angular.forEach(tareaViejas,function(tarea) {
+							if(tarea.id != id){
+									datos.push(tarea);
+									console.log('se elimina '+ tarea.id);
+								}
+						});
+						console.log(datos);
+
+						Dato=datos;
+						$scope.dato=Dato;
+						}
+
+						
+					$scope.addText = function(){
+						var incre = Dato.length + 1;
+						
+					Dato.push({mensaje:"default",id: incre});
+					}
+					$scope.dato=Dato;
+
+				}
+
+				function dosController($scope, Dato){
+					$scope.dato=Dato;
+				}
+
+
+	</script>
+</head>
+<body>
+
+
+
+<div ng-app="miApp">
+	
+	<div id='general' ng-controller="unoController">
+		<div ng-repeat="da in dato">
+
+			<input type="checkbox" name="" id=""><input type="text" name="" id="" ng-model="da.mensaje"><a href="" ng-click="addText()">1</a>||<a href="" ng-click="eliminar(da.id)">2</a><br>
+		</div>
+	</div>
+
+	<div id='cambios' ng-controller="dosController">
+		<div ng-repeat="da in dato">
+			<input type="checkbox" name="" id="">{{da.mensaje}} <br>
+		</div>
+	</div>
+</div>
+	
+</body>
+</html>

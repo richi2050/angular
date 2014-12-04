@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>filtro</title>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.27/angular.min.js"></script>
+	<script src="filtrosController.js"></script>
+		<script src="https://code.angularjs.org/1.2.27/i18n/angular-locale_es-mx.js"></script>
+
+</head>
+<body ng-app>
+	<div class="container" ng-controller='filtrosController'>
+		<h1>Filtros controller</h1>
+		<hr>
+			<div class="panel panel-primary">
+				<div class="panel-heading">
+					<div class="input-group">
+						<span class="input-group-addon">
+							<i class="glyphicon glyphicon-search"></i>
+						</span>
+						<input type="text" placeholder="Buscare empleado" class="form-control" ng-model='buscar.materno'>
+						<!--  buscar es para todos los campos y buscar solo un campo  buscar.materno-->
+					</div>
+				</div>
+				<div class="panel-body">
+					<table class="table table-striped">
+						<thead>
+							<tr>
+								<th>
+									<a href="#" ng-click="ordenarPor('nombre')">
+										Nombre
+									</a>
+									<span class="caret" style="cursor: pointer" ng-click="ordenarPor('-nombre')"></span>
+								</th>
+								<th>Apelldio paterno</th>
+								<th>Apellido materno</th>
+								<th>Primer dia de trabajo</th>
+								<th>telefono</th>
+								<th>salario</th>
+								<th>bono</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr ng-repeat="empleado in empleados | orderBy:ordenSeleccionado | filter:buscar">
+								<td>{{empleado.nombre}}</td>
+								<td>{{empleado.paterno | uppercase}}</td>
+								<td>{{empleado.materno | lowercase}}</td>
+								<td>{{empleado.primerDias | date:'fullDate'}} a las {{empleado.primerDias | date:'h:mma'}} </td>
+								<td>$ {{empleado.salario | currency}}</td>
+								<td>{{empleado.telefono}}</td>
+								<td>{{empleado.bono | number:2}}</td>
+							</tr>
+						</tbody>
+						
+					</table>
+
+				</div>
+			</div>
+	</div>
+</body>
+</html>

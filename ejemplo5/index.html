@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>ejemplo 5</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.27/angular.min.js"></script>
+	<script src="mainController.js"></script>
+
+</head>
+<body ng-app="miApp">
+<div class="container">
+	<h1>
+		Compartir datos entre controladores
+	</h1>
+	<hr>
+		<span class="lead text-info"> controlador uno</span>
+	<div ng-controller="unoController">
+		<input type="text" size="50" ng-model="dato.mensaje">
+		<h3 class="text-info">{{dato.mensaje}}</h3>
+	</div>
+	<hr>
+		<span class="lead text-warning"> controlador dos</span>
+
+	<div ng-controller="dosController">
+		<input type="text" size="50" ng-model="dato.mensaje">
+		<h3 class="text-warning">{{dato.mensaje}}</h3>
+	</div>
+</div>
+</body>
+</html>

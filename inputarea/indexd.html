@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>ejemplo</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.27/angular.min.js"></script>
+	<script>
+	var miApp= angular.module('miApp',[]);
+
+		miApp.factory('Dato',function(){ 
+			return [
+			{mensaje:'Primer opcion'},
+			{mensaje:'Dos opcion'},
+			{mensaje:'Tres opcion'},
+			{mensaje:'Cuatro opcion'}];
+		});
+
+				function unoController($scope, Dato){
+					$scope.dato=Dato;
+
+					$scope.addText = function(){
+						
+					}
+					
+				}
+
+
+				function dosController($scope, Dato){
+					$scope.dato=Dato;
+				}
+
+
+	</script>
+</head>
+<body>
+
+
+
+<div ng-app="miApp">
+	
+	<div id='general' ng-controller="unoController">
+
+		<input type="checkbox" name="" id=""><input type="text" name="" id="" ng-model="dato[0].mensaje"><a href="">1</a>||<a href="">2</a>			<br>
+		<input type="checkbox" name="" id=""><input type="text" name="" id="" ng-model="dato[1].mensaje"><a href="">1</a>||<a href="">2</a><br>
+		<input type="checkbox" name="" id=""><input type="text" name="" id="" ng-model="dato[2].mensaje"><a href="">1</a>||<a href="">2</a><br>
+		<input type="checkbox" name="" id=""><input type="text" name="" id="" ng-model="dato[3].mensaje"><a href="">1</a>||<a href="">2</a><br>
+	</div>
+
+	<div id='cambios' ng-controller="dosController">
+		<input type="checkbox" name="" id="">{{dato[0].mensaje}} <br>
+		<input type="checkbox" name="" id="">{{dato[1].mensaje}} <br>
+		<input type="checkbox" name="" id="">{{dato[2].mensaje}} <br>
+		<input type="checkbox" name="" id="">{{dato[3].mensaje}} <br>
+
+	</div>
+</div>
+	
+</body>
+</html>
